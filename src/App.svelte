@@ -64,54 +64,58 @@
 
 <main>
 	<div class="container">
-		<h1>my domain info</h1>
+		<h1>Frosty Franklin</h1>
 		<p>Enter your domain name below:</p>
-		<input type="url" bind:value={url} />
+		<input class="search" type="url" bind:value={url} />
 
 		<button on:click={runWHOIS} disabled={!url.length}
 			>Lookup My Domain</button
 		>
 
-		{#if isLoading}
-			<div class="loading">
-				<p>Reticulating splines...</p>
-			</div>
-		{:else if APIresponse.status === 200}
-			<div class="results">
-				<p>
-					G'day, Your domain name {APIresponse.result.domain_name} is registered
-					with
-					<a
-						class="pill"
-						href={`https://www.google.com/search?q=${APIresponse.result.registrar}`}
-						target="_blank">{APIresponse.result.registrar}</a
-					>
-				</p>
-				<p>
-					Your domain name will expire on {prettyDate(
-						APIresponse.result.expiration_date
-					)}
-				</p>
-			</div>
-		{:else if APIresponse.status === 404}
-			<div class="results has-smaller-font">
-				<p>
-					Uh oh, we didn't get any results for your domain name. This
-					means that it has either expired, or is unregistered.
-				</p>
-				<p>
-					Hint: Your emails & website will stop working if your domain
-					name has expired!
-				</p>
-				<p>
-					Register your domain name <a
-						class="pill"
-						href={`https://theitmanhosting.secureapi.com.au/`}
-						target="_blank">by clicking here</a
-					>
-				</p>
-			</div>
-		{/if}
+		<div class="results-container">
+			{#if isLoading}
+				<div class="loading">
+					<p>Reticulating splines...</p>
+				</div>
+			{:else if APIresponse.status === 200}
+				<div class="results">
+					<p>
+						Ho ho ho! Your domain name {APIresponse.result
+							.domain_name}
+						is registered with
+						<a
+							class="pill"
+							href={`https://www.google.com/search?q=${APIresponse.result.registrar}`}
+							target="_blank">{APIresponse.result.registrar}</a
+						>
+					</p>
+					<p>
+						Your domain name will expire on {prettyDate(
+							APIresponse.result.expiration_date
+						)}
+					</p>
+				</div>
+			{:else if APIresponse.status === 404}
+				<div class="results has-smaller-font">
+					<p>
+						Uh oh, we didn't get any results for your domain name.
+						This means that it has either expired, or is
+						unregistered.
+					</p>
+					<p>
+						Hint: Your emails & website will stop working if your
+						domain name has expired!
+					</p>
+					<p>
+						Register your domain name <a
+							class="pill"
+							href={`https://theitmanhosting.secureapi.com.au/`}
+							target="_blank">by clicking here</a
+						>
+					</p>
+				</div>
+			{/if}
+		</div>
 	</div>
 </main>
 

@@ -36,7 +36,7 @@ main {
 .container {
 	text-align: center;
 	padding: 1em;
-	max-width: 340px;
+	max-width: 540px;
 }
 
 a {
@@ -75,6 +75,10 @@ input {
 
 input:disabled {
 	color: #ccc;
+}
+
+input.search {
+	max-width: 300px;
 }
 
 button {
@@ -117,12 +121,17 @@ h1 {
 	font-size: 1rem;
 }
 
+.results-container {
+	min-height: 186px;
+	margin-top: 32px;
+}
+
 .results {
 	background: linear-gradient(125deg, var(--color-light), var(--color-darker));
 	color: #fff;
 	border-radius: 8px;
 	padding: 24px 12px;
-	margin-top: 32px;
+	
 }
 
 .results a {
